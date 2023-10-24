@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+void calcularFibonacci(long long n) {
+    long long actual = 1, anterior = 0, terminoActual = 1;
+    while (terminoActual <= n) {
+        if (anterior >= 0) {
+            printf("Término %lld: %lld\n", terminoActual, anterior);
+        }
+        long long siguiente = actual + anterior;
+        anterior = actual;
+        actual = siguiente;
+        terminoActual++;
+    }
+}
+
+int main() {
+    long long n;
+
+    printf("Ingrese la cantidad de términos de la serie de Fibonacci que desea calcular (1-20000000): ");
+    scanf("%lld", &n);
+
+    if (n < 1 || n > 20000000) {
+        printf("El número de términos debe estar en el rango de 1 a 20,000,000.\n");
+        return 1;
+    }
+
+    printf("Calculando los primeros %lld términos de la serie de Fibonacci...\n", n);
+    calcularFibonacci(n);
+
+    return 0;
+}
